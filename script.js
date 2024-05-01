@@ -18,4 +18,14 @@ function addTask(){
         taskInput.value = '';
     }
 }
-//
+// function to render tasks
+function renderTasks(doc){
+    const taskList = document.getElementById('task_List');
+    const taskItem = document.createElement('li');
+    taskItem.className = 'task_List';
+    taskItem.innerHTML = `
+    <span>${doc.data().task}</span>
+    <button onclick="deleteTask('${doc.id}')" class="delete">Delete</button>
+    `;
+    taskList.appendChild(taskItem);
+}
