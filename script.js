@@ -29,3 +29,13 @@ function renderTasks(doc){
     `;
     taskList.appendChild(taskItem);
 }
+
+// realtime listener for tasks
+db.collection('tasks').orderBy('timestamp').onSnapshot(snapshot =>{
+    const changes = snapshot.docChanges();
+    changes.forEach(change =>{
+        if(change.type === 'added'){
+            renderTasks(change.doc);
+        }
+    });
+});
