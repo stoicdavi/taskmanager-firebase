@@ -39,3 +39,7 @@ db.collection('tasks').orderBy('timestamp').onSnapshot(snapshot =>{
         }
     });
 });
+// function to delete a task
+function deleteTask(id){
+    db.collection('tasks').doc(id).delete();
+}
